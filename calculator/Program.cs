@@ -1,32 +1,18 @@
-﻿string? x = "";
-string? y = "";
-string? z = "";
-string[] operations = ["+", "-", "*", "/"];
+﻿using System.Text.RegularExpressions;
 
-while (!Int32.TryParse(x, out int fallback))
+string input = "";
+while (!Regex.IsMatch(input, @"^\d+(\.\d+)?(\+|\-|\*|\/)\d+(\.\d+)?$"))
 {
-    Console.WriteLine("Enter number 1:");
-    x = Console.ReadLine();
+    Console.WriteLine("Enter calculation:");
+    input = Console.ReadLine()!;
 }
+Console.Write(input + "=");
 
-while (!operations.Contains(y))
-{
-    Console.WriteLine("Select operation (+ - * /):");
-    y = Console.ReadLine();
-}
+string[] calculation = Regex.Split(input, @"(\+|\-|\*|\/)");
+decimal a = Decimal.Parse(calculation[0]);
+decimal b = Decimal.Parse(calculation[2]);
 
-while (!Int32.TryParse(z, out int fallback))
-{
-    Console.WriteLine("Enter number 2:");
-    z = Console.ReadLine();
-}
-
-Console.Write(x + y + z + "=");
-
-int a = Int32.Parse(x);
-int b = Int32.Parse(z);
-
-switch (y)
+switch (calculation[1])
 {
     case "+":
         Console.WriteLine(a + b);
@@ -41,3 +27,4 @@ switch (y)
         Console.WriteLine(a / b);
         break;
 }
+
