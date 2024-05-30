@@ -8,10 +8,17 @@ public class TodoController : ControllerBase
 {
     List<Todo> todos = [];
 
-    [HttpGet(Name = "GetTodo")]
+    [HttpGet]
     public IEnumerable<Todo> Get()
     {
         return todos;
+    }
+
+    [HttpPost]
+    public IActionResult Post(Todo newTodo)
+    {
+        todos.Add(newTodo);
+        return CreatedAtAction(nameof(Get), newTodo);
     }
 }
 
