@@ -16,7 +16,7 @@ public class TodoController : ControllerBase
     {
         var todo = TodoService.Get(id);
 
-        if (todo == null)
+        if (todo is null)
             return NotFound();
 
         return todo;
@@ -38,12 +38,25 @@ public class TodoController : ControllerBase
         }
 
         var oldTodo = TodoService.Get(id);
-        if (oldTodo == null)
+        if (oldTodo is null)
         {
             return NotFound();
         }
 
         TodoService.Update(todo);
+        return NoContent();
+    }
+
+    [HttpDelete]
+    public IActionResult Delete(int id)
+    {
+        var todo = TodoService.Get(id);
+        if (todo is null)
+        {
+            return NotFound();
+        }
+
+        TodoService.Delete(id);
         return NoContent();
     }
 }
