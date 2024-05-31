@@ -14,12 +14,12 @@ public class TodoController : ControllerBase
     [HttpGet("{id}")]
     public ActionResult<TodoItem> Get(int id)
     {
-        var foundTodo = TodoService.Get(id);
+        var todo = TodoService.Get(id);
 
-        if (foundTodo == null)
+        if (todo == null)
             return NotFound();
 
-        return foundTodo;
+        return todo;
     }
 
     [HttpPost]
@@ -27,6 +27,24 @@ public class TodoController : ControllerBase
     {
         TodoService.Add(todo);
         return CreatedAtAction(nameof(Get), new { id = todo.Id }, todo);
+    }
+
+    [HttpPut]
+    public IActionResult Put(int id, TodoItem todo)
+    {
+        if (id != todo.Id)
+        {
+            return BadRequest();
+        }
+
+        var oldTodo = TodoService.Get(id);
+        if (oldTodo == null)
+        {
+            return NotFound();
+        }
+
+        TodoService.Update(todo);
+        return NoContent();
     }
 }
 
