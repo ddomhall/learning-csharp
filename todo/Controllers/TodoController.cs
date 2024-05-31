@@ -8,16 +8,25 @@ namespace todo.Controllers;
 public class TodoController : ControllerBase
 {
     [HttpGet]
-    public IEnumerable<TodoItem> Get()
+    public ActionResult<List<TodoItem>> GetAll() =>
+        TodoService.GetAll();
+
+    [HttpGet("{id}")]
+    public ActionResult<TodoItem> Get(int id)
     {
-        return TodoService.GetAll();
+        var foundTodo = TodoService.Get(id);
+
+        if (foundTodo == null)
+            return NotFound();
+
+        return foundTodo;
     }
 
     [HttpPost]
-    public IActionResult Post(TodoItem newTodo)
+    public IActionResult Post(TodoItem todo)
     {
-        TodoService.Add(newTodo);
-        return CreatedAtAction(nameof(Get), newTodo);
+        TodoService.Add(todo);
+        return CreatedAtAction(nameof(Get), new { id = todo.Id }, todo);
     }
 }
 
