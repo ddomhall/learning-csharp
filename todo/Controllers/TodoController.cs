@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using todo.Services;
 
 namespace todo.Controllers;
 
@@ -6,18 +7,16 @@ namespace todo.Controllers;
 [Route("Todos")]
 public class TodoController : ControllerBase
 {
-    List<Todo> todos = [];
-
     [HttpGet]
-    public IEnumerable<Todo> Get()
+    public IEnumerable<TodoItem> Get()
     {
-        return todos;
+        return TodoService.GetAll();
     }
 
     [HttpPost]
-    public IActionResult Post(Todo newTodo)
+    public IActionResult Post(TodoItem newTodo)
     {
-        todos.Add(newTodo);
+        TodoService.Add(newTodo);
         return CreatedAtAction(nameof(Get), newTodo);
     }
 }
