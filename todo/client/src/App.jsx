@@ -8,9 +8,23 @@ function App() {
   const [categories, setCategories] = useState([])
 
   useEffect(() => {
-    todoService.getAll().then(res => setTodos(res))
-    categoryService.getAll().then(res => setCategories(res))
+    getCategories()
+    getTodos()
   }, [])
+
+  function getCategories() {
+    categoryService.getAll().then(res => setCategories(res))
+  }
+
+  function getTodos() {
+    todoService.getAll().then(res => setTodos(res))
+  }
+
+  async function createCategory() {
+    const name = window.prompt('name')
+    await categoryService.create({ name })
+    getCategories()
+  }
 
   return (
     <>
@@ -19,7 +33,7 @@ function App() {
         {
           categories.map(category => <Category key={category.id} name={category.name} todos={todos.filter(todo => todo.categoryId == category.id)} />)
         }
-        <button className='ring ring-white h-16 w-16 text-3xl rounded-3xl'>+</button>
+        <button onClick={createCategory} className='ring ring-white h-16 w-16 text-3xl rounded-3xl'>+</button>
       </ul>
     </>
   )

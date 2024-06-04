@@ -1,7 +1,7 @@
-const baseUrl = 'http://localhost:5014/'
+const baseUrl = 'http://localhost:5014/todos'
 
 async function getAll() {
-  return fetch(baseUrl + 'todos').then(res => res.json())
+  return fetch(baseUrl).then(res => res.json())
 }
 
 export default {
