@@ -31,7 +31,7 @@ function App() {
       <h1 className='text-center border-b mb-6'>todo list</h1>
       <ul className='flex gap-6 m-6 justify-center items-center'>
         {
-          categories.map(category => <Category key={category.id} name={category.name} todos={todos.filter(todo => todo.categoryId == category.id)} />)
+          categories.map(category => <Category key={category.id} category={category} todos={todos.filter(todo => todo.categoryId == category.id)} getTodos={getTodos} />)
         }
         <button onClick={createCategory} className='ring ring-white h-16 w-16 text-3xl rounded-3xl'>+</button>
       </ul>

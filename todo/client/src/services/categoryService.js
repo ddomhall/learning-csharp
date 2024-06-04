@@ -11,7 +11,7 @@ async function create(category) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(category)
-  }).then(res => res.json())
+  })
 }
 
 export default {

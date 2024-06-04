@@ -8,8 +8,8 @@ public static class TodoService
     {
         Todos = new List<TodoItem>
         {
-            new TodoItem { Id = 1, Name = "todo1", CategoryId = 1},
-            new TodoItem { Id = 2, Name = "todo2", CategoryId = 2 }
+            new TodoItem { Id = 1, Name = "t1", CategoryId = 1},
+            new TodoItem { Id = 2, Name = "t2", CategoryId = 2 }
         };
     }
 

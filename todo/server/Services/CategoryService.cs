@@ -8,8 +8,8 @@ public static class CategoryService
     {
         Categories = new List<Category>
         {
-            new Category { Id = 1, Name = "category1" },
-            new Category { Id = 2, Name = "category2" }
+            new Category { Id = 1, Name = "c1" },
+            new Category { Id = 2, Name = "c2" }
         };
     }
 
