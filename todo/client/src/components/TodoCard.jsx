@@ -7,7 +7,7 @@ export default function TodoCard({ todo, deleteTodo }) {
     <div className="flex p-3 w-80 rounded-3xl ring ring-white justify-between">
       <h3 className="leading-10">{todo.name}</h3>
       <div className="flex gap-3">
-        <button className="ring ring-white rounded-xl p-3">
+        <button className="ring ring-white rounded-xl p-3 w-10">
           <FaPencil size={"12px"} />
         </button>
         <button onClick={() => deleteTodo(todo.id)} className="ring ring-white rounded-xl p-3">

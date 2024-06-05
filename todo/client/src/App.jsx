@@ -36,8 +36,8 @@ function App() {
 
   return (
     <>
-      <h1 className='text-center border-b mb-6'>todo list</h1>
-      <ul className='flex gap-6 m-6 justify-center items-center'>
+      <h1 className='text-center border-b mb-8'>todo list</h1>
+      <ul className='flex gap-8 m-8 justify-center items-center'>
         {
           categories.map(category => <Category
             key={category.id}
