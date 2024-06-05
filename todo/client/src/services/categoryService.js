@@ -14,8 +14,15 @@ async function create(category) {
   })
 }
 
+async function remove(id) {
+  return fetch(baseUrl + '/' + id, {
+    method: 'DELETE',
+  })
+}
+
 export default {
   getAll,
-  create
+  create,
+  remove
 }
 
