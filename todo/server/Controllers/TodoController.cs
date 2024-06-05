@@ -47,7 +47,7 @@ public class TodoController : ControllerBase
         return NoContent();
     }
 
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {
         var todo = TodoService.Get(id);
