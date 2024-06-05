@@ -56,6 +56,7 @@ public class CategoryController : ControllerBase
             return NotFound();
         }
 
+        TodoService.DeleteInCategory(id);
         CategoryService.Delete(id);
         return NoContent();
     }

@@ -32,6 +32,11 @@ public static class TodoService
         Todos.Remove(todo);
     }
 
+    public static void DeleteInCategory(int id)
+    {
+        Todos.RemoveAll(todo => todo.CategoryId == id);
+    }
+
     public static void Update(TodoItem todo)
     {
         var index = Todos.FindIndex(p => p.Id == todo.Id);

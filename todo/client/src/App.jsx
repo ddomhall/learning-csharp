@@ -30,6 +30,7 @@ function App() {
     if (window.confirm('are you sure?')) {
       await categoryService.remove(id)
       getCategories()
+      getTodos()
     }
   }
 
