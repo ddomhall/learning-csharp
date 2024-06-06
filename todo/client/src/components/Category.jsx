@@ -1,6 +1,7 @@
 import TodoCard from './TodoCard'
 import todoService from '../services/todoService'
-import { FaXmark } from "react-icons/fa6";
+import { FaTrash } from "react-icons/fa6";
+import { FaPencil } from "react-icons/fa6";
 
 export default function Category({ category, todos, getTodos, deleteCategory }) {
   async function createTodo() {
@@ -17,12 +18,15 @@ export default function Category({ category, todos, getTodos, deleteCategory }) 
   return (
     <>
       <section className='ring ring-white p-8 rounded-3xl gap-8 flex flex-col w-96'>
-        <div className='flex justify-between items-center'>
-          <button onClick={createTodo} className='ring ring-white h-16 w-16 text-3xl rounded-3xl'>+</button>
+        <div className="flex p-3 w-80 rounded-3xl justify-between items-center">
           <h2 className='text-center'>{category.name}</h2>
-          <button onClick={() => deleteCategory(category.id)} className="ring ring-white rounded-3xl h-16 w-16 flex items-center justify-center"> <FaXmark /> </button>
+          <div className='flex gap-3'>
+            <button onClick={() => deleteCategory(category.id)} className="ring ring-white rounded-xl p-3 w-10 h-10"> <FaTrash /> </button>
+            <button className="ring ring-white rounded-xl p-3 w-10 h-10"> <FaPencil /> </button>
+            <button onClick={createTodo} className='ring ring-white rounded-xl w-10 h-10 text-3xl'>+</button>
+          </div>
         </div>
-        <div className='flex flex-col m-auto gap-8'>
+        <div className='flex flex-col gap-8'>
           {todos.map(todo => <TodoCard key={todo.id} todo={todo} deleteTodo={deleteTodo} />)}
         </div>
       </section>

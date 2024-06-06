@@ -35,9 +35,9 @@ function App() {
   }
 
   return (
-    <>
-      <h1 className='text-center border-b mb-8'>todo list</h1>
-      <ul className='flex gap-8 m-8 justify-center items-center'>
+    <div className='h-screen'>
+      <h1 className='text-center'>todo list</h1>
+      <ul className='flex gap-8 p-8 justify-center min-h-[calc(100vh-24px)]'>
         {
           categories.map(category => <Category
             key={category.id}
@@ -46,9 +46,11 @@ function App() {
             getTodos={getTodos}
             deleteCategory={deleteCategory} />)
         }
-        <button onClick={createCategory} className='ring ring-white h-16 w-16 text-3xl rounded-3xl'>+</button>
+        <div className='flex items-center'>
+          <button onClick={createCategory} className='ring ring-white h-16 w-16 text-3xl rounded-3xl'>+</button>
+        </div>
       </ul>
-    </>
+    </div>
   )
 }
 
