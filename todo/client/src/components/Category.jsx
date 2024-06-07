@@ -1,18 +1,17 @@
 import TodoCard from './TodoCard'
 import todoService from '../services/todoService'
-import { FaTrash } from "react-icons/fa6";
-import { FaPencil } from "react-icons/fa6";
+import { FaTrash, FaPencil } from "react-icons/fa6";
 
-export default function Category({ category, todos, getTodos, deleteCategory }) {
+export default function Category({ category, todos, refreshData, deleteCategory }) {
   async function createTodo() {
     const name = window.prompt('name')
     await todoService.create({ name, categoryId: category.id })
-    getTodos()
+    refreshData()
   }
 
   async function deleteTodo(id) {
     await todoService.remove(id)
-    getTodos()
+    refreshData()
   }
 
   return (
@@ -27,7 +26,7 @@ export default function Category({ category, todos, getTodos, deleteCategory }) 
           </div>
         </div>
         <div className='flex flex-col gap-8'>
-          {todos.map(todo => <TodoCard key={todo.id} todo={todo} deleteTodo={deleteTodo} />)}
+          {todos.map(todo => <TodoCard key={todo.id} todo={todo} refreshData={refreshData} deleteTodo={deleteTodo} />)}
         </div>
       </section>
     </>

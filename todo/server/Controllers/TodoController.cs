@@ -30,14 +30,9 @@ public class TodoController : ControllerBase
     }
 
     [HttpPut]
-    public IActionResult Put(int id, TodoItem todo)
+    public IActionResult Put(TodoItem todo)
     {
-        if (id != todo.Id)
-        {
-            return BadRequest();
-        }
-
-        var oldTodo = TodoService.Get(id);
+        var oldTodo = TodoService.Get(todo.Id);
         if (oldTodo is null)
         {
             return NotFound();

@@ -20,8 +20,19 @@ async function remove(id) {
   })
 }
 
+async function update(todo) {
+  return fetch(baseUrl, {
+    method: 'PUT',
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(todo)
+  })
+}
+
 export default {
   getAll,
   create,
-  remove
+  remove,
+  update
 }

@@ -1,10 +1,8 @@
+import todoService from '../services/todoService';
 import { useState } from 'react'
-import { FaPencil } from "react-icons/fa6";
-import { FaXmark } from "react-icons/fa6";
-import { FaCheck } from "react-icons/fa6";
-import { FaTrash } from "react-icons/fa6";
+import { FaPencil, FaXmark, FaCheck, FaTrash } from "react-icons/fa6";
 
-export default function TodoCard({ todo, deleteTodo }) {
+export default function TodoCard({ todo, refreshData, deleteTodo }) {
   const [edit, setEdit] = useState(false)
 
   function cancelEdit(e) {
@@ -12,9 +10,10 @@ export default function TodoCard({ todo, deleteTodo }) {
     setEdit(false)
   }
 
-  function updateTodo(e) {
+  async function updateTodo(e) {
     e.preventDefault()
-    console.log(e)
+    await todoService.update({ ...todo, name: e.target.todoName.value })
+    refreshData()
     setEdit(false)
   }
 
@@ -22,7 +21,7 @@ export default function TodoCard({ todo, deleteTodo }) {
     <>
       {edit ?
         <form onSubmit={updateTodo} className="flex p-3 w-80 rounded-3xl ring ring-white justify-between">
-          <input defaultValue={todo.name} className='ring ring-white rounded-xl w-48 h-10' />
+          <input name='todoName' defaultValue={todo.name} autoFocus className='ring ring-white rounded-xl w-48 h-10' />
           <div className="flex gap-3">
             <button onClick={cancelEdit} className="ring ring-white rounded-xl p-3"> <FaXmark /> </button>
             <button type='submit' className="ring ring-white rounded-xl p-3"> <FaCheck /> </button>

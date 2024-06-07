@@ -8,29 +8,24 @@ function App() {
   const [categories, setCategories] = useState([])
 
   useEffect(() => {
-    getCategories()
-    getTodos()
+    refreshData()
   }, [])
 
-  function getCategories() {
+  function refreshData() {
     categoryService.getAll().then(res => setCategories(res))
-  }
-
-  function getTodos() {
     todoService.getAll().then(res => setTodos(res))
   }
 
   async function createCategory() {
     const name = window.prompt('name')
     await categoryService.create({ name })
-    getCategories()
+    refreshData()
   }
 
   async function deleteCategory(id) {
     if (window.confirm('are you sure?')) {
       await categoryService.remove(id)
-      getCategories()
-      getTodos()
+      refreshData()
     }
   }
 
@@ -43,7 +38,7 @@ function App() {
             key={category.id}
             category={category}
             todos={todos.filter(todo => todo.categoryId == category.id)}
-            getTodos={getTodos}
+            refreshData={refreshData}
             deleteCategory={deleteCategory} />)
         }
         <div className='flex items-center'>
