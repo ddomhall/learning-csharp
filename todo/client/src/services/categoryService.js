@@ -20,9 +20,20 @@ async function remove(id) {
   })
 }
 
+async function update(category) {
+  return fetch(baseUrl, {
+    method: 'PUT',
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(category)
+  })
+}
+
 export default {
   getAll,
   create,
-  remove
+  remove,
+  update
 }
 

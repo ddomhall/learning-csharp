@@ -30,14 +30,9 @@ public class CategoryController : ControllerBase
     }
 
     [HttpPut]
-    public IActionResult Put(int id, Category category)
+    public IActionResult Put(Category category)
     {
-        if (id != category.Id)
-        {
-            return BadRequest();
-        }
-
-        var oldCategory = CategoryService.Get(id);
+        var oldCategory = CategoryService.Get(category.Id);
         if (oldCategory is null)
         {
             return NotFound();
