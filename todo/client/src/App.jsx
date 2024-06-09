@@ -32,7 +32,7 @@ function App() {
   return (
     <div className='h-screen'>
       <h1 className='text-center'>todo list</h1>
-      <ul className='flex gap-8 p-8 justify-center min-h-[calc(100vh-24px)]'>
+      <ul className='flex gap-8 p-8 justify-center h-[calc(100vh-24px)]'>
         {
           categories.map(category => <Category
             key={category.id}
