@@ -1,8 +1,8 @@
 import todoService from '../services/todoService';
 import { useState } from 'react'
-import { FaPencil, FaXmark, FaCheck, FaTrash } from "react-icons/fa6";
+import { FaPencil, FaXmark, FaCheck, FaTrash, FaCheckToSlot } from "react-icons/fa6";
 
-export default function TodoCard({ todo, refreshData, deleteTodo }) {
+export default function TodoCard({ todo, refreshData, deleteTodo, done }) {
   const [edit, setEdit] = useState(false)
 
   function cancelEdit(e) {
@@ -33,7 +33,10 @@ export default function TodoCard({ todo, refreshData, deleteTodo }) {
           <div className="flex gap-3">
             <button onClick={() => deleteTodo(todo.id)} className="ring ring-white rounded-xl p-3"> <FaTrash /> </button>
             <button onClick={() => setEdit(true)} className="ring ring-white rounded-xl p-3"> <FaPencil /> </button>
-            <button className="ring ring-white rounded-xl p-3"> <FaCheck /> </button>
+            {done ?
+              <button className="ring ring-white rounded-xl p-3"> <FaCheckToSlot /> </button> :
+              <button className="ring ring-white rounded-xl p-3"> <FaCheck /> </button>
+            }
           </div>
         </div>
       }

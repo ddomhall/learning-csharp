@@ -9,7 +9,8 @@ public static class TodoService
         Todos = new List<TodoItem>
         {
             new TodoItem { Id = 1, Name = "t1", CategoryId = 1},
-            new TodoItem { Id = 2, Name = "t2", CategoryId = 2 }
+            new TodoItem { Id = 2, Name = "t1.1", CategoryId = 1, Done = true },
+            new TodoItem { Id = 3, Name = "t2", CategoryId = 2}
         };
     }
 

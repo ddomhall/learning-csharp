@@ -60,14 +60,16 @@ export default function Category({ category, todos, refreshData, deleteCategory 
               </div>
             }
             <div className='flex flex-col gap-8'>
-              {todos.map(todo => <TodoCard key={todo.id} todo={todo} refreshData={refreshData} deleteTodo={deleteTodo} />)}
+              {todos.filter(todo => !todo.done).map(todo => <TodoCard key={todo.id} todo={todo} refreshData={refreshData} deleteTodo={deleteTodo} done={false} />)}
+              <hr />
+              {todos.filter(todo => todo.done).map(todo => <TodoCard key={todo.id} todo={todo} refreshData={refreshData} deleteTodo={deleteTodo} done={true} />)}
             </div>
           </> :
           <div className='flex flex-col items-center justify-between pb-3 pt-6 gap-6 h-full'>
             <div className='[writing-mode:vertical-rl]'>{category.name}</div>
             <div className='flex flex-col items-center gap-3'>
-              <div className='ring ring-white w-10 h-10 rounded-xl text-center leading-10'>{todos.length}</div>
-              <div className='ring ring-white w-10 h-10 rounded-xl text-center leading-10'>x</div>
+              <div className='ring ring-white w-10 h-10 rounded-xl text-center leading-10'>{todos.filter(todo => !todo.done).length}</div>
+              <div className='ring ring-white w-10 h-10 rounded-xl text-center leading-10'>{todos.filter(todo => todo.done).length}</div>
             </div>
           </div>
         }
