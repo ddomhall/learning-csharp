@@ -60,9 +60,9 @@ export default function Category({ category, todos, refreshData, deleteCategory 
               </div>
             }
             <div className='flex flex-col gap-8'>
-              {todos.filter(todo => !todo.done).map(todo => <TodoCard key={todo.id} todo={todo} refreshData={refreshData} deleteTodo={deleteTodo} done={false} />)}
+              {todos.filter(todo => !todo.done).map(todo => <TodoCard key={todo.id} todo={todo} refreshData={refreshData} deleteTodo={deleteTodo} />)}
               <hr />
-              {todos.filter(todo => todo.done).map(todo => <TodoCard key={todo.id} todo={todo} refreshData={refreshData} deleteTodo={deleteTodo} done={true} />)}
+              {todos.filter(todo => todo.done).map(todo => <TodoCard key={todo.id} todo={todo} refreshData={refreshData} deleteTodo={deleteTodo} />)}
             </div>
           </> :
           <div className='flex flex-col items-center justify-between pb-3 pt-6 gap-6 h-full'>
