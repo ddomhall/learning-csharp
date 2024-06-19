@@ -5,3 +5,4 @@ Part1.studentGrades();
 Part1.calculateGpa();
 
 Part2.methods();
+Part2.ifElse();
