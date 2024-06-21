@@ -7,3 +7,4 @@ Part1.calculateGpa();
 Part2.methods();
 Part2.ifElse();
 Part2.iteration();
+Part2.readability();
