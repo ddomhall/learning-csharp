@@ -12,3 +12,4 @@ Part2.processArrays();
 Part2.processArrays2();
 
 Part3.booleanExpressions();
+Part3.variableScope();
