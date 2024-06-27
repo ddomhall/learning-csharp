@@ -15,3 +15,4 @@ Part3.booleanExpressions();
 Part3.variableScope();
 Part3.switchCase();
 Part3.forStatement();
+Part3.doWhile();
