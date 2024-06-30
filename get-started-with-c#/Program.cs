@@ -18,3 +18,5 @@ Part3.forStatement();
 Part3.doWhile();
 Part3.branchingAndLooping();
 Part3.branchingAndLooping2();
+
+Part4.dataTypes();
