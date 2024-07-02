@@ -22,3 +22,4 @@ Part3.branchingAndLooping2();
 Part4.dataTypes();
 Part4.castingAndConversion();
 Part4.arrayOperations();
+Part4.alphanumericFormatting();
