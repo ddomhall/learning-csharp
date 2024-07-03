@@ -25,3 +25,4 @@ Part4.arrayOperations();
 Part4.alphanumericFormatting();
 Part4.stringMethods();
 Part4.variableData();
+Part4.variableData2();
