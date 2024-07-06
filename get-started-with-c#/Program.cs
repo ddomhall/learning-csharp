@@ -30,3 +30,4 @@ Part4.variableData2();
 Part5.firstMethod();
 Part5.methodParameters();
 Part5.returnMethods();
+Part5.pettingZoo();
