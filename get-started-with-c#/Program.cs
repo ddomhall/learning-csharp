@@ -31,3 +31,4 @@ Part5.firstMethod();
 Part5.methodParameters();
 Part5.returnMethods();
 Part5.pettingZoo();
+Part5.miniGame();
