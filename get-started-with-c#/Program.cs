@@ -34,3 +34,4 @@ Part5.pettingZoo();
 Part5.miniGame();
 
 Part6.debuggingTools();
+Part6.handlingExceptions();
