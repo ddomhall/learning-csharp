@@ -35,3 +35,4 @@ Part5.miniGame();
 
 Part6.debuggingTools();
 Part6.handlingExceptions();
+Part6.throwExceptions();
