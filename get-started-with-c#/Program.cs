@@ -37,3 +37,4 @@ Part6.debuggingTools();
 Part6.handlingExceptions();
 Part6.throwExceptions();
 Part6.guidedProject();
+Part6.challengeProject();
