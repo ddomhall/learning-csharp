@@ -11,23 +11,23 @@ namespace RunGroopWebApp.Controllers
 {
     public class RaceController : Controller
     {
-        private readonly IRaceRepository _raceRespository;
+        private readonly IRaceRepository _raceRepository;
         private readonly IPhotoService _photoService;
 
         public RaceController(IRaceRepository raceRespository, IPhotoService photoService)
         {
-            _raceRespository = raceRespository;
+            _raceRepository = raceRespository;
             _photoService = photoService;
         }
         public async Task<IActionResult> Index()
         {
-            IEnumerable<Race> races = await _raceRespository.GetAll();
+            IEnumerable<Race> races = await _raceRepository.GetAll();
             return View(races);
         }
 
         public async Task<IActionResult> Detail(int id)
         {
-            Race race = await _raceRespository.GetByIdAsync(id);
+            Race race = await _raceRepository.GetByIdAsync(id);
             return View(race);
         }
 
@@ -54,7 +54,7 @@ namespace RunGroopWebApp.Controllers
                         State = raceVM.Address.State
                     }
                 };
-                _raceRespository.Add(race);
+                _raceRepository.Add(race);
                 return RedirectToAction("Index");
             }
             else
@@ -66,7 +66,7 @@ namespace RunGroopWebApp.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
-            var race = await _raceRespository.GetByIdAsync(id);
+            var race = await _raceRepository.GetByIdAsync(id);
             if (race == null) return View("Error");
             var raceVM = new EditRaceViewModel
             {
@@ -89,7 +89,7 @@ namespace RunGroopWebApp.Controllers
                 return View("Edit", raceVM);
             }
 
-            var userRace = await _raceRespository.GetByIdAsyncNoTracking(id);
+            var userRace = await _raceRepository.GetByIdAsyncNoTracking(id);
 
             if (userRace != null)
             {
@@ -114,13 +114,29 @@ namespace RunGroopWebApp.Controllers
                     Address = raceVM.Address
                 };
 
-                _raceRespository.Update(race);
+                _raceRepository.Update(race);
                 return RedirectToAction("Index");
             }
             else
             {
                 return View(raceVM);
             }
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var raceDetails = await _raceRepository.GetByIdAsync(id);
+            if (raceDetails == null) return View("Error");
+            return View(raceDetails);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteClub(int id)
+        {
+            var clubDetails = await _raceRepository.GetByIdAsync(id);
+            if (clubDetails == null) return View("Error");
+            _raceRepository.Delete(clubDetails);
+            return RedirectToAction("Index");
         }
     }
 }
