@@ -4,7 +4,6 @@ using RunGroopWebApp.Data;
 using RunGroopWebApp.Interfaces;
 using RunGroopWebApp.Models;
 using RunGroopWebApp.ViewModels;
-using System.Diagnostics.Eventing.Reader;
 
 namespace RunGroopWebApp.Controllers
 {
@@ -12,11 +11,13 @@ namespace RunGroopWebApp.Controllers
     {
         private readonly IClubRepository _clubRepository;
         private readonly IPhotoService _photoService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public ClubController(IClubRepository clubRepository, IPhotoService photoService)
+        public ClubController(IClubRepository clubRepository, IPhotoService photoService, IHttpContextAccessor httpContextAccessor)
         {
             _clubRepository = clubRepository;
             _photoService = photoService;
+            _httpContextAccessor = httpContextAccessor;
         }
         public async Task<IActionResult> Index()
         {
@@ -30,9 +31,11 @@ namespace RunGroopWebApp.Controllers
             return View(club);
         }
 
-        public IActionResult Create(int id)
+        public IActionResult Create()
         {
-            return View();
+            var curUserId = _httpContextAccessor.HttpContext.User.GetUserId();
+            var createClubViewModel = new CreateClubViewModel { AppUserId = curUserId };
+            return View(createClubViewModel);
         }
 
         [HttpPost]
@@ -41,26 +44,29 @@ namespace RunGroopWebApp.Controllers
             if (ModelState.IsValid)
             {
                 var result = await _photoService.AddPhotoAsync(clubVM.Image);
+
                 var club = new Club
                 {
                     Title = clubVM.Title,
                     Description = clubVM.Description,
                     Image = result.Url.ToString(),
+                    AppUserId = clubVM.AppUserId,
                     Address = new Address
                     {
                         Street = clubVM.Address.Street,
                         City = clubVM.Address.City,
-                        State = clubVM.Address.State
+                        State = clubVM.Address.State,
                     }
                 };
                 _clubRepository.Add(club);
                 return RedirectToAction("Index");
             }
-           else
+            else
             {
                 ModelState.AddModelError("", "Photo upload failed");
-                return View(clubVM);
             }
+
+            return View(clubVM);
         }
 
         public async Task<IActionResult> Edit(int id)
@@ -74,7 +80,7 @@ namespace RunGroopWebApp.Controllers
                 AddressId = club.AddressId,
                 Address = club.Address,
                 URL = club.Image,
-                ClubCategory = club.ClubCategory,
+                ClubCategory = club.ClubCategory
             };
             return View(clubVM);
         }
@@ -101,8 +107,8 @@ namespace RunGroopWebApp.Controllers
                     ModelState.AddModelError("", "Could not delete photo");
                     return View(clubVM);
                 }
-
                 var photoResult = await _photoService.AddPhotoAsync(clubVM.Image);
+
                 var club = new Club
                 {
                     Id = id,
@@ -110,10 +116,11 @@ namespace RunGroopWebApp.Controllers
                     Description = clubVM.Description,
                     Image = photoResult.Url.ToString(),
                     AddressId = clubVM.AddressId,
-                    Address = clubVM.Address
+                    Address = clubVM.Address,
                 };
 
                 _clubRepository.Update(club);
+
                 return RedirectToAction("Index");
             }
             else
@@ -122,7 +129,8 @@ namespace RunGroopWebApp.Controllers
             }
         }
 
-        public async Task<IActionResult> Delete (int id)
+
+        public async Task<IActionResult> Delete(int id)
         {
             var clubDetails = await _clubRepository.GetByIdAsync(id);
             if (clubDetails == null) return View("Error");
@@ -134,6 +142,7 @@ namespace RunGroopWebApp.Controllers
         {
             var clubDetails = await _clubRepository.GetByIdAsync(id);
             if (clubDetails == null) return View("Error");
+
             _clubRepository.Delete(clubDetails);
             return RedirectToAction("Index");
         }
