@@ -2,3 +2,4 @@
 
 Sections.Basics();
 Sections.Interfaces();
+Sections.Generics();

@@ -2,25 +2,6 @@
 {
     partial class Sections
     {
-        /*
-        class MyClass
-        {
-            public MyClass()
-            {
-                //custom constructor
-            }
-            private void TestFunction()
-            {
-                //method only accessible within class
-            }
-        }
-        enum PlayerState
-        {
-            Idle,
-            Attacking
-        }
-        static PlayerState playerState;
-        */
         public static void Basics()
         {
             /*
@@ -99,4 +80,23 @@
             */
         }
     }
+    /*
+    class MyClass
+    {
+        public MyClass()
+        {
+            //custom constructor
+        }
+        private void TestFunction()
+        {
+            //method only accessible within class
+        }
+    }
+    enum PlayerState
+    {
+        Idle,
+        Attacking
+    }
+    static PlayerState playerState;
+    */
 }
