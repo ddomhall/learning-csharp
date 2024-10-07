@@ -1,3 +1,4 @@
 ﻿using TimCoreyCourse.Homework;
 
-Variables.Output();
+//Variables.Output();
+TypeConversions.Output();
