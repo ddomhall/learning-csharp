@@ -2,4 +2,5 @@
 
 //Variables.Output();
 //TypeConversions.Output();
-ConditionalStatements.Output();
+//ConditionalStatements.Output();
+StudentCheck.Output();
