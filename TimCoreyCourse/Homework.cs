@@ -146,5 +146,15 @@
             Console.WriteLine(names[id]);
         }
 
+        public static void ForLoops()
+        {
+            Console.Write("Enter names: ");
+            List<string> names = Console.ReadLine().Split(',').ToList();
+            for (int i = 0; i < names.Count; i++)
+            {
+                Console.WriteLine($"Hello {names[i]}");
+            }
+        }
+
     }
 }

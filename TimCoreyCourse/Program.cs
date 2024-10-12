@@ -7,4 +7,5 @@
 //Homework.DoLoops();
 //Homework.Arrays();
 //Homework.Lists();
-Homework.Dictionaries();
+//Homework.Dictionaries();
+Homework.ForLoops();
