@@ -104,5 +104,22 @@
             Console.WriteLine(names[num - 1]);
         }
 
+        public static void Lists()
+        {
+            List<string> roster = new List<string>();
+            string input;
+            do
+            {
+                Console.Write("enter student name: ");
+                input = Console.ReadLine();
+                if (input != "")
+                {
+                    roster.Add(input);
+                }
+            }
+            while (input != "");
+            Console.WriteLine(roster.Count());
+        }
+
     }
 }

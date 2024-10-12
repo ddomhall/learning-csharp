@@ -6,3 +6,4 @@
 //Homework.StudentCheck();
 //Homework.DoLoops();
 //Homework.Arrays();
+Homework.Lists();
