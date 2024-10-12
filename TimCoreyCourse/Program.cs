@@ -6,4 +6,5 @@
 //Homework.StudentCheck();
 //Homework.DoLoops();
 //Homework.Arrays();
-Homework.Lists();
+//Homework.Lists();
+Homework.Dictionaries();

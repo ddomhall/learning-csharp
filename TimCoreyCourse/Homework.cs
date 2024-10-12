@@ -121,5 +121,30 @@
             Console.WriteLine(roster.Count());
         }
 
+        public static void Dictionaries()
+        {
+            Dictionary<int, string> names = new Dictionary<int, string>();
+
+            Console.Write("enter name 1: ");
+            names[1] = Console.ReadLine();
+
+            Console.Write("enter name 2: ");
+            names[2] = Console.ReadLine();
+
+            Console.Write("enter name 3: ");
+            names[3] = Console.ReadLine();
+
+            bool valid;
+            int id;
+
+            do
+            {
+                Console.Write("which name do you want? ");
+                valid = int.TryParse(Console.ReadLine(), out id);
+            }
+            while (!valid || id < 1 || id > 3);
+            Console.WriteLine(names[id]);
+        }
+
     }
 }
