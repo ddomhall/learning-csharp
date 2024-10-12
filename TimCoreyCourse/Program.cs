@@ -1,8 +1,8 @@
-﻿using TimCoreyCourse.Homework;
+﻿using TimCoreyCourse;
 
-//Variables.Output();
-//TypeConversions.Output();
-//ConditionalStatements.Output();
-//StudentCheck.Output();
-//DoLoops.Output();
-Arrays.Output();
+//Homework.Variables();
+//Homework.TypeConversions();
+//Homework.ConditionalStatements();
+//Homework.StudentCheck();
+//Homework.DoLoops();
+//Homework.Arrays();
