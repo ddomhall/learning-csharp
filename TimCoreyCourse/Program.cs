@@ -8,4 +8,5 @@
 //Homework.Arrays();
 //Homework.Lists();
 //Homework.Dictionaries();
-Homework.ForLoops();
+//Homework.ForLoops();
+Homework.ForEachLoops();

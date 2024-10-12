@@ -90,7 +90,7 @@
 
         public static void Arrays()
         {
-            string[] names = new string[] {"a", "b", "c"};
+            string[] names = new string[] { "a", "b", "c" };
             bool valid = false;
             int num;
 
@@ -153,6 +153,24 @@
             for (int i = 0; i < names.Count; i++)
             {
                 Console.WriteLine($"Hello {names[i]}");
+            }
+        }
+
+        public static void ForEachLoops()
+        {
+            string input;
+            List<string> names = new List<string>();
+
+            do
+            {
+                Console.Write("enter name: ");
+                input = Console.ReadLine();
+                if (input != "") names.Add(input);
+            } while (input != "");
+
+            foreach (string name in names)
+            {
+                Console.WriteLine($"Hello {name}");
             }
         }
 
