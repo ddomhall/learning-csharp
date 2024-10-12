@@ -174,5 +174,28 @@
             }
         }
 
+        public static void Methods()
+        {
+            void WelcomeUser()
+            {
+                Console.WriteLine("Welcome");
+            }
+            
+            string GetName()
+            {
+                Console.Write("name: ");
+                return Console.ReadLine();
+            }
+
+            void GreetUser(string name)
+            {
+                Console.WriteLine($"Hello {name}");
+            }
+
+            WelcomeUser();
+            string name = GetName();
+            GreetUser(name);
+        }
+
     }
 }

@@ -9,4 +9,5 @@
 //Homework.Lists();
 //Homework.Dictionaries();
 //Homework.ForLoops();
-Homework.ForEachLoops();
+//Homework.ForEachLoops();
+Homework.Methods();
