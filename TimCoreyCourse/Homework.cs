@@ -180,7 +180,7 @@
             {
                 Console.WriteLine("Welcome");
             }
-            
+
             string GetName()
             {
                 Console.Write("name: ");
@@ -195,6 +195,74 @@
             WelcomeUser();
             string name = GetName();
             GreetUser(name);
+        }
+
+        public static void GuestBook()
+        {
+            Dictionary<string, int> guestBook = new Dictionary<string, int>();
+
+            do
+            {
+                guestBook[GetName()] = GetGuests();
+            }
+            while (AnotherGuest());
+
+            DisplayNamesAndTotal();
+
+            string GetName()
+            {
+                string name = "";
+
+                do
+                {
+                    Console.Write("name: ");
+                    name = Console.ReadLine();
+                } while (name == "" || guestBook.ContainsKey(name));
+
+                return name;
+            }
+
+            int GetGuests()
+            {
+                string numGuestsText;
+                int numGuests;
+
+                do
+                {
+                    Console.Write("guests: ");
+                    numGuestsText = Console.ReadLine();
+                }
+                while (!int.TryParse(numGuestsText, out numGuests));
+
+                return numGuests;
+            }
+
+            bool AnotherGuest()
+            {
+                string anotherGuest;
+
+                do
+                {
+                    Console.Write("add another guest? ");
+                    anotherGuest = Console.ReadLine();
+                } while (anotherGuest.ToLower() != "y" && anotherGuest.ToLower() != "n");
+
+                return anotherGuest == "y";
+            }
+
+            void DisplayNamesAndTotal()
+            {
+                Console.WriteLine("\nGroups:");
+                int total = 0;
+
+                foreach (var guest in guestBook)
+                {
+                    Console.WriteLine(guest.Key);
+                    total += guest.Value;
+                }
+
+                Console.WriteLine($"\nGuests: {total}");
+            }
         }
 
     }
