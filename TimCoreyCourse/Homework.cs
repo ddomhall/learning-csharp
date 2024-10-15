@@ -1,4 +1,6 @@
-﻿namespace TimCoreyCourse
+﻿using TimCoreyCourse.ClassLibrary;
+
+namespace TimCoreyCourse
 {
     public class Homework
     {
@@ -319,6 +321,14 @@
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        public static void StaticClasses()
+        {
+            Calculations.Add(10, 10);
+            Calculations.Subtract(10, 10);
+            Calculations.Multiply(10, 10);
+            Calculations.Divide(10, 10);
         }
 
     }
