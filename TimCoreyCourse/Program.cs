@@ -18,4 +18,5 @@
 //Homework.AdvancedBreakpoints();
 //Homework.StaticClasses();
 //Homework.InstantiatedClasses();
-Homework.PropertyTypes();
+//Homework.PropertyTypes();
+Homework.Namespaces();

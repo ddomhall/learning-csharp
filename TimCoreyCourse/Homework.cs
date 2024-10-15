@@ -1,5 +1,6 @@
 ﻿using TimCoreyCourse.ClassLibrary.Services;
 using TimCoreyCourse.ClassLibrary.Models;
+using TimCoreyCourse.ClassLibrary.Namespaces;
 
 namespace TimCoreyCourse
 {
@@ -351,6 +352,11 @@ namespace TimCoreyCourse
             address.PostCode = "postcode";
 
             Console.WriteLine(address.FullAddress);
+        }
+
+        public static void Namespaces()
+        {
+            DifferentNamespace.PrintName();
         }
 
     }
