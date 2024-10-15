@@ -5,8 +5,6 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "calculator", "calculator\calculator.csproj", "{F09291AF-A838-47E5-9FFD-C7EA30598C16}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "packages", "first-packages\packages.csproj", "{B7ABD635-AB9A-454E-BF20-E3A19E24C480}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "get-started-with-c#", "get-started-with-c#\get-started-with-c#.csproj", "{C420FCAE-661C-4EB9-87C3-55C8A41692C4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mslearn-dotnet-files", "mslearn-dotnet-files\mslearn-dotnet-files.csproj", "{BA428303-A8B8-489F-81F4-BFB1CD113D89}"
@@ -31,10 +29,6 @@ Global
 		{F09291AF-A838-47E5-9FFD-C7EA30598C16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F09291AF-A838-47E5-9FFD-C7EA30598C16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F09291AF-A838-47E5-9FFD-C7EA30598C16}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B7ABD635-AB9A-454E-BF20-E3A19E24C480}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B7ABD635-AB9A-454E-BF20-E3A19E24C480}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B7ABD635-AB9A-454E-BF20-E3A19E24C480}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B7ABD635-AB9A-454E-BF20-E3A19E24C480}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C420FCAE-661C-4EB9-87C3-55C8A41692C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C420FCAE-661C-4EB9-87C3-55C8A41692C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C420FCAE-661C-4EB9-87C3-55C8A41692C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
