@@ -1,4 +1,5 @@
-﻿using TimCoreyCourse.ClassLibrary;
+﻿using TimCoreyCourse.ClassLibrary.Services;
+using TimCoreyCourse.ClassLibrary.Models;
 
 namespace TimCoreyCourse
 {
@@ -325,10 +326,21 @@ namespace TimCoreyCourse
 
         public static void StaticClasses()
         {
-            Calculations.Add(10, 10);
-            Calculations.Subtract(10, 10);
-            Calculations.Multiply(10, 10);
-            Calculations.Divide(10, 10);
+            CalculationService.Add(10, 10);
+            CalculationService.Subtract(10, 10);
+            CalculationService.Multiply(10, 10);
+            CalculationService.Divide(10, 10);
+        }
+
+        public static void InstantiatedClasses()
+        {
+            Person person = new Person();
+            person.Name = "name";
+
+            Address address = new Address();
+            address.PostCode = "postcode";
+
+            Console.WriteLine($"{person.Name} lives at {address.PostCode}");
         }
 
     }
