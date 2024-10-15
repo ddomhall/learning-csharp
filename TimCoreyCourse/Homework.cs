@@ -306,5 +306,20 @@
             }
         }
 
+        public static void AdvancedBreakpoints()
+        {
+            try
+            {
+                for (int i = 1; i <= 100; i++)
+                {
+                    if (i == 73) throw new Exception("iteration 73");
+                }
+            }
+            catch ( Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
     }
 }
