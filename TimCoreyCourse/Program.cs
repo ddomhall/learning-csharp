@@ -12,4 +12,5 @@
 //Homework.ForEachLoops();
 //Homework.Methods();
 //Homework.GuestBook();
-Homework.Breakpoints();
+//Homework.Breakpoints();
+Homework.Exceptions();

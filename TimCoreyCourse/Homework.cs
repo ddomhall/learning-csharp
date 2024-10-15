@@ -273,6 +273,21 @@
                 total += i * 5;
             }
         }
+        
+        public static void Exceptions()
+        {
+            try
+            {
+                for (int i = 1; i <= 5; i++)
+                {
+                    if (i == 5) throw new Exception("5 iterations");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
 
     }
 }
