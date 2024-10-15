@@ -2,9 +2,10 @@
 {
     public class DifferentNamespace
     {
-        public static void PrintName()
+        public DifferentNamespace(string name)
         {
-            Console.WriteLine("different namespace");
+            Name = name;
         }
+        public string Name { get; }
     }
 }

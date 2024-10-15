@@ -356,7 +356,8 @@ namespace TimCoreyCourse
 
         public static void Namespaces()
         {
-            DifferentNamespace.PrintName();
+            DifferentNamespace differentNamespace = new DifferentNamespace("different namespace");
+            Console.WriteLine(differentNamespace.Name);
         }
 
         public static void ClassLibraries()
