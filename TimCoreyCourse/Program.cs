@@ -13,4 +13,5 @@
 //Homework.Methods();
 //Homework.GuestBook();
 //Homework.Breakpoints();
-Homework.Exceptions();
+//Homework.Exceptions();
+Homework.AdvancedExceptions();

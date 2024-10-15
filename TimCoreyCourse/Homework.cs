@@ -289,5 +289,22 @@
             }
         }
 
+        public static void AdvancedExceptions()
+        {
+            try
+            {
+                BadFunction();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            void BadFunction()
+            {
+                throw new Exception("bad function");
+            }
+        }
+
     }
 }
