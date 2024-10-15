@@ -343,5 +343,15 @@ namespace TimCoreyCourse
             Console.WriteLine($"{person.Name} lives at {address.PostCode}");
         }
 
+        public static void PropertyTypes()
+        {
+            Address address = new Address();
+            address.HouseNumber = 1;
+            address.Street = "street";
+            address.PostCode = "postcode";
+
+            Console.WriteLine(address.FullAddress);
+        }
+
     }
 }

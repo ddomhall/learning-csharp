@@ -17,4 +17,5 @@
 //Homework.AdvancedExceptions();
 //Homework.AdvancedBreakpoints();
 //Homework.StaticClasses();
-Homework.InstantiatedClasses();
+//Homework.InstantiatedClasses();
+Homework.PropertyTypes();
