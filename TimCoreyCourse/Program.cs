@@ -20,4 +20,5 @@
 //Homework.InstantiatedClasses();
 //Homework.PropertyTypes();
 //Homework.Namespaces();
-Homework.ClassLibraries();
+//Homework.ClassLibraries();
+Homework.GuestBookV2();

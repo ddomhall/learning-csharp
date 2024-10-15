@@ -277,7 +277,7 @@ namespace TimCoreyCourse
                 total += i * 5;
             }
         }
-        
+
         public static void Exceptions()
         {
             try
@@ -319,7 +319,7 @@ namespace TimCoreyCourse
                     if (i == 73) throw new Exception("iteration 73");
                 }
             }
-            catch ( Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -368,5 +368,70 @@ namespace TimCoreyCourse
             Console.WriteLine($"{person.Name} is {person.Age}");
         }
 
+        public static void GuestBookV2()
+        {
+            List<Guest> guests = new List<Guest>();
+
+            do
+            {
+                guests.Add(new Guest(GetPartyName(), GetPartySize()));
+            } while (MoreGuests());
+
+            DisplayGuestInfo();
+
+            string GetPartyName()
+            {
+                string partyName = "";
+                do
+                {
+                    Console.Write("Party name: ");
+                    partyName = Console.ReadLine();
+                } while (partyName == "");
+
+                return partyName;
+            }
+
+            int GetPartySize()
+            {
+                int partySize;
+                string partySizeText;
+
+                do
+                {
+                    Console.Write("Party size: ");
+                    partySizeText = Console.ReadLine();
+                } while (!int.TryParse(partySizeText, out partySize));
+
+                return partySize;
+            }
+
+            bool MoreGuests()
+            {
+                string moreGuests;
+
+                do
+                {
+                    Console.Write("More guests? ");
+                    moreGuests = Console.ReadLine();
+                } while (moreGuests != "y" && moreGuests != "n");
+
+                return moreGuests == "y";
+            }
+
+            void DisplayGuestInfo()
+            {
+                int total = 0;
+                Console.WriteLine("\nParty names:");
+
+                foreach (Guest guest in guests)
+                {
+                    Console.WriteLine(guest.PartyName);
+                    total += guest.PartySize;
+                }
+
+                Console.Write($"\nTotal guests: {total}\n");
+            }
+        }
     }
+
 }
