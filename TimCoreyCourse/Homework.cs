@@ -359,5 +359,14 @@ namespace TimCoreyCourse
             DifferentNamespace.PrintName();
         }
 
+        public static void ClassLibraries()
+        {
+            Person person = new Person();
+            person.Name = "name";
+            person.Age = 0;
+
+            Console.WriteLine($"{person.Name} is {person.Age}");
+        }
+
     }
 }

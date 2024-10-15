@@ -19,4 +19,5 @@
 //Homework.StaticClasses();
 //Homework.InstantiatedClasses();
 //Homework.PropertyTypes();
-Homework.Namespaces();
+//Homework.Namespaces();
+Homework.ClassLibraries();
