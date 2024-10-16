@@ -433,6 +433,22 @@ namespace TimCoreyCourse
                 Console.Write($"\nTotal guests: {total}\n");
             }
         }
-    }
 
+        public static void BattleshipApp()
+        {
+            int numPlayers;
+            string numPlayersText;
+            do
+            {
+                Console.Write("how many players: ");
+                numPlayersText = Console.ReadLine();
+            } while (!int.TryParse(numPlayersText, out numPlayers));
+            
+            List<BattleshipPlayer> players = new List<BattleshipPlayer>();
+            for (int i = 0; i < numPlayers; i++)
+            {
+                players.Add(new BattleshipPlayer());
+            }
+        }
+    }
 }
