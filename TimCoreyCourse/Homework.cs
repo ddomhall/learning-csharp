@@ -443,11 +443,35 @@ namespace TimCoreyCourse
                 Console.Write("how many players: ");
                 numPlayersText = Console.ReadLine();
             } while (!int.TryParse(numPlayersText, out numPlayers));
-            
+
             List<BattleshipPlayer> players = new List<BattleshipPlayer>();
             for (int i = 0; i < numPlayers; i++)
             {
                 players.Add(new BattleshipPlayer());
+            }
+
+            foreach (BattleshipPlayer player in players)
+            {
+                int placedShips = 0;
+                do
+                {
+                    Console.WriteLine($"where do you want to put ship number {placedShips + 1}?");
+                    string input = Console.ReadLine().ToUpper();
+                    if (!player.Board.ContainsKey(input))
+                    {
+                        Console.WriteLine("invalid location");
+                    }
+                    else if (player.Board[input] != BattleshipBoardStatus.Empty)
+                    {
+                        Console.WriteLine("location not empty");
+                    }
+                    else
+                    {
+                        player.Board[input] = BattleshipBoardStatus.Ship;
+                        placedShips++;
+                    }
+                }
+                while (placedShips < 5);
             }
         }
     }
