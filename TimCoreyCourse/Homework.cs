@@ -468,6 +468,7 @@ namespace TimCoreyCourse
                     else
                     {
                         player.Board[input] = BattleshipBoardStatus.Ship;
+                        BattleshipService.DisplayBoard(player);
                         placedShips++;
                     }
                 }
