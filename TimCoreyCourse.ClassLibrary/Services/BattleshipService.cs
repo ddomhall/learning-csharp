@@ -14,7 +14,7 @@ namespace TimCoreyCourse.ClassLibrary.Services
                 Console.Clear();
                 Console.Write("how many players: ");
                 numPlayersText = Console.ReadLine();
-            } while (!int.TryParse(numPlayersText, out numPlayers));
+            } while (!int.TryParse(numPlayersText, out numPlayers) || numPlayers == 0);
 
             return numPlayers;
         }
@@ -131,6 +131,31 @@ namespace TimCoreyCourse.ClassLibrary.Services
                 }
                 while (placedShips < 5);
             }
+        }
+
+        public static int SelectPlayerToAttack(List<BattleshipPlayer> players, int currentPlayer)
+        {
+            int playerToAttack;
+
+            do
+            {
+                Console.Clear();
+                Console.WriteLine($"Player {currentPlayer + 1} attacking\n");
+
+                for (int i = 0; i < players.Count; i++)
+                {
+                    if (i != currentPlayer) Console.WriteLine($"{i + 1} - {players[i].Name}");
+                }
+
+                Console.Write("\nselect the number for the player you want to attack: ");
+
+                if (!int.TryParse(Console.ReadLine(), out playerToAttack)) continue;
+                if (playerToAttack < 1 || playerToAttack > players.Count) continue;
+                if (playerToAttack == currentPlayer + 1) continue;
+                break;
+            } while (true);
+
+            return playerToAttack - 1;
         }
     }
 }

@@ -440,6 +440,17 @@ namespace TimCoreyCourse
             List<BattleshipPlayer> players = BattleshipService.CreatePlayers(numPlayers);
 
             BattleshipService.PlaceShips(players);
+
+            BattleshipPlayer winner;
+            int currentPlayer = 0;
+
+            do
+            {
+                int playerToAttack = BattleshipService.SelectPlayerToAttack(players, currentPlayer);
+
+                currentPlayer = (currentPlayer + 1) % players.Count;
+                winner = players[0];
+            } while (winner == null);
         }
     }
 }
