@@ -5,6 +5,7 @@
         public BattleshipPlayer(string name)
         {
             Name = name;
+            Active = true;
             Board = new Dictionary<string, BattleshipBoardStatus>();
             foreach (var letter in new string[] { "A", "B", "C", "D", "E" })
             {
@@ -14,7 +15,8 @@
                 }
             }
         }
-        public Dictionary<string, BattleshipBoardStatus> Board { get; set; }
         public string Name { get; }
+        public bool Active { get; set; }
+        public Dictionary<string, BattleshipBoardStatus> Board { get; set; }
     }
 }

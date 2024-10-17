@@ -441,16 +441,21 @@ namespace TimCoreyCourse
 
             BattleshipService.PlaceShips(players);
 
-            BattleshipPlayer winner;
+            BattleshipPlayer? winner = null;
             int currentPlayer = 0;
 
             do
             {
                 int playerToAttack = BattleshipService.SelectPlayerToAttack(players, currentPlayer);
 
-                currentPlayer = (currentPlayer + 1) % players.Count;
-                winner = players[0];
-            } while (winner == null);
+                BattleshipService.AttackPlayer(players[playerToAttack]);
+                BattleshipService.CheckActive(players, playerToAttack);
+
+                if (players.Count() == 1) break;
+                else currentPlayer = (currentPlayer + 1) % players.Count;
+            } while (true);
+
+            Console.WriteLine($"{players[0].Name} wins");
         }
     }
 }

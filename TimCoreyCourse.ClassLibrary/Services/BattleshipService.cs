@@ -14,7 +14,7 @@ namespace TimCoreyCourse.ClassLibrary.Services
                 Console.Clear();
                 Console.Write("how many players: ");
                 numPlayersText = Console.ReadLine();
-            } while (!int.TryParse(numPlayersText, out numPlayers) || numPlayers == 0);
+            } while (!int.TryParse(numPlayersText, out numPlayers) || numPlayers < 2);
 
             return numPlayers;
         }
@@ -99,7 +99,7 @@ namespace TimCoreyCourse.ClassLibrary.Services
 
         public static void PlaceShips(List<BattleshipPlayer> players)
         {
-            foreach(BattleshipPlayer player in players)
+            foreach (BattleshipPlayer player in players)
             {
                 int placedShips = 0;
                 string invalidPlacement = "";
@@ -137,14 +137,20 @@ namespace TimCoreyCourse.ClassLibrary.Services
         {
             int playerToAttack;
 
+            if (players.Count == 2) return currentPlayer == 0 ? 1 : 0;
+
             do
             {
                 Console.Clear();
-                Console.WriteLine($"Player {currentPlayer + 1} attacking\n");
+                Console.WriteLine($"{players[currentPlayer].Name} attacking");
 
                 for (int i = 0; i < players.Count; i++)
                 {
-                    if (i != currentPlayer) Console.WriteLine($"{i + 1} - {players[i].Name}");
+                    if (i != currentPlayer)
+                    {
+                        Console.WriteLine($"\n{i + 1} - {players[i].Name}");
+                        DisplayBoard(players[i], true);
+                    }
                 }
 
                 Console.Write("\nselect the number for the player you want to attack: ");
@@ -156,6 +162,123 @@ namespace TimCoreyCourse.ClassLibrary.Services
             } while (true);
 
             return playerToAttack - 1;
+        }
+
+        public static void AttackPlayer(BattleshipPlayer player)
+        {
+            string locationInput;
+            string invalidLocation = "";
+            do
+            {
+                Console.Clear();
+                Console.WriteLine($"attacking {player.Name}\n");
+                DisplayBoard(player, true);
+
+                Console.Write($"\n{invalidLocation}enter location to attack: ");
+                locationInput = Console.ReadLine().ToUpper();
+
+                try
+                {
+                    switch (player.Board[locationInput])
+                    {
+                        case BattleshipBoardStatus.Empty:
+                            player.Board[locationInput] = BattleshipBoardStatus.Miss;
+                            Console.WriteLine(@"
+        ------               _____
+       /      \ ___\     ___/    ___
+    --/-  ___  /    \/  /  /    /   \
+   /     /           \__     //_     \
+  /                     \   / ___     |
+  |           ___       \/+--/        /
+   \__           \       \           /
+      \__                 |          /
+     \     /____      /  /       |   /
+      _____/         ___       \/  /\
+           \__      /      /    |    |
+         /    \____/   \       /   //
+     // / / // / /\    /-_-/\//-__-
+      /  /  // /   \__// / / /  //
+     //   / /   //   /  // / // /
+      /// // / /   /  //  / //
+   //   //       //  /  // / /
+     / / / / /     /  /    /
+  ///  / / /  //  // /  // //
+     ///    /    /    / / / /
+///  /    // / /  // / / /  /
+   // ///   /      /// / /");
+                            break;
+                        case BattleshipBoardStatus.Ship:
+                            player.Board[locationInput] = BattleshipBoardStatus.Hit;
+                            Console.WriteLine(@"
+     _.-^^---....,,--
+ _--                  --_
+<                        >)
+|                         |
+ \._                   _./
+    ```--. . , ; .--'''
+          | |   |
+       .-=||  | |=-.
+       `-=#$%&%$#=-'
+          | ;  :|
+ _____.,-#%&$@%#&#~,._____");
+                            break;
+                        default:
+                            throw new Exception();
+                    }
+                    Thread.Sleep(1000);
+                    break;
+                }
+                catch (Exception)
+                {
+                    invalidLocation = $"\"{locationInput}\" is an invalid location, ";
+                    continue;
+                }
+            }
+            while (true);
+        }
+
+        public static void CheckActive(List<BattleshipPlayer> players, int playerToCheck)
+        {
+            int total = 0;
+            foreach (var letter in new string[] { "A", "B", "C", "D", "E" })
+            {
+                foreach (var number in new int[] { 1, 2, 3, 4, 5 })
+                {
+                    if (players[playerToCheck].Board[letter + number] == BattleshipBoardStatus.Hit) total++;
+                }
+            }
+            if (total == 5)
+            {
+                players.Remove(players[playerToCheck]);
+                Console.Clear();
+                Console.WriteLine(@"
+                            ,--.
+                           {    }
+                           K,   }
+                          /  ~Y`
+                     ,   /   /
+                    {_'-K.__/
+                      `/-.__L._
+                      /  ' /`\_}
+                     /  ' /
+             ____   /  ' /
+      ,-'~~~~    ~~/  ' /_
+    ,'             ``~~~  ',
+   (                        Y
+  {                         I
+ {      -                    `,
+ |       ',                   )
+ |        |   ,..__      __. Y
+ |    .,_./  Y ' / ^Y   J   )|
+ \           |' /   |   |   ||
+  \          L_/    . _ (_,.'(
+   \,   ,      ^^""' / |      )
+     \_  \          /,L]     /
+       '-_~-,       ` `   ./`
+          `'{_            )
+              ^^\..___,.--`");
+                Thread.Sleep(1000);
+            }
         }
     }
 }
