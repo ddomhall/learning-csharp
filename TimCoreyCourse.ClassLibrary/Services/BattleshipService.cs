@@ -33,7 +33,7 @@ namespace TimCoreyCourse.ClassLibrary.Services
                     nameInput = Console.ReadLine().Trim();
                 } while (nameInput == "");
 
-                players.Add(new BattleshipPlayer(nameInput));
+                players.Add(new BattleshipPlayer(nameInput, i));
             }
 
             return players;
@@ -133,35 +133,36 @@ namespace TimCoreyCourse.ClassLibrary.Services
             }
         }
 
-        public static int SelectPlayerToAttack(List<BattleshipPlayer> players, int currentPlayer)
+        public static BattleshipPlayer SelectPlayerToAttack(List<BattleshipPlayer> players)
         {
-            int playerToAttack;
+            BattleshipPlayer playerToAttack;
+            BattleshipPlayer playerAttacking = players.Find(x => x.IsPlayerTurn);
 
-            if (players.Count == 2) return currentPlayer == 0 ? 1 : 0;
+            if (players.Count == 2) return players.Find(x => x != playerAttacking);
 
             do
             {
                 Console.Clear();
-                Console.WriteLine($"{players[currentPlayer].Name} attacking");
+                Console.WriteLine($"{playerAttacking.Name} attacking");
 
-                for (int i = 0; i < players.Count; i++)
+                foreach (BattleshipPlayer player in players)
                 {
-                    if (i != currentPlayer)
+                    if (!player.IsPlayerTurn)
                     {
-                        Console.WriteLine($"\n{i + 1} - {players[i].Name}");
-                        DisplayBoard(players[i], true);
+                        Console.WriteLine($"\n{player.Id + 1} - {player.Name}");
+                        DisplayBoard(player, true);
                     }
                 }
 
                 Console.Write("\nselect the number for the player you want to attack: ");
 
-                if (!int.TryParse(Console.ReadLine(), out playerToAttack)) continue;
-                if (playerToAttack < 1 || playerToAttack > players.Count) continue;
-                if (playerToAttack == currentPlayer + 1) continue;
+                if (!int.TryParse(Console.ReadLine(), out int playerToAttackId)) continue;
+                playerToAttack = players.Find(x => x.Id == playerToAttackId - 1);
+                if (playerToAttack == null || playerToAttack.IsPlayerTurn) continue;
                 break;
             } while (true);
 
-            return playerToAttack - 1;
+            return playerToAttack;
         }
 
         public static void AttackPlayer(BattleshipPlayer player)
@@ -237,19 +238,19 @@ namespace TimCoreyCourse.ClassLibrary.Services
             while (true);
         }
 
-        public static void CheckActive(List<BattleshipPlayer> players, int playerToCheck)
+        public static void CheckActive(List<BattleshipPlayer> players, BattleshipPlayer playerToCheck)
         {
             int total = 0;
             foreach (var letter in new string[] { "A", "B", "C", "D", "E" })
             {
                 foreach (var number in new int[] { 1, 2, 3, 4, 5 })
                 {
-                    if (players[playerToCheck].Board[letter + number] == BattleshipBoardStatus.Hit) total++;
+                    if (playerToCheck.Board[letter + number] == BattleshipBoardStatus.Hit) total++;
                 }
             }
             if (total == 5)
             {
-                players.Remove(players[playerToCheck]);
+                players.Remove(playerToCheck);
                 Console.Clear();
                 Console.WriteLine(@"
                             ,--.

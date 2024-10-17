@@ -2,10 +2,11 @@
 {
     public class BattleshipPlayer
     {
-        public BattleshipPlayer(string name)
+        public BattleshipPlayer(string name, int id)
         {
+            Id = id;
             Name = name;
-            Active = true;
+            IsPlayerTurn = id == 0 ? true : false;
             Board = new Dictionary<string, BattleshipBoardStatus>();
             foreach (var letter in new string[] { "A", "B", "C", "D", "E" })
             {
@@ -15,8 +16,9 @@
                 }
             }
         }
+        public int Id { get; set; }
         public string Name { get; }
-        public bool Active { get; set; }
+        public bool IsPlayerTurn { get; set; }
         public Dictionary<string, BattleshipBoardStatus> Board { get; set; }
     }
 }

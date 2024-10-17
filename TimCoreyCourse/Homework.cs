@@ -441,14 +441,12 @@ namespace TimCoreyCourse
 
             BattleshipService.PlaceShips(players);
 
-            BattleshipPlayer? winner = null;
             int currentPlayer = 0;
 
             do
             {
-                int playerToAttack = BattleshipService.SelectPlayerToAttack(players, currentPlayer);
-
-                BattleshipService.AttackPlayer(players[playerToAttack]);
+                BattleshipPlayer playerToAttack = BattleshipService.SelectPlayerToAttack(players);
+                BattleshipService.AttackPlayer(playerToAttack);
                 BattleshipService.CheckActive(players, playerToAttack);
 
                 if (players.Count() == 1) break;
