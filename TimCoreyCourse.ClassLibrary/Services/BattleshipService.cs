@@ -281,5 +281,13 @@ namespace TimCoreyCourse.ClassLibrary.Services
                 Thread.Sleep(1000);
             }
         }
+
+        public static void UpdatePlayerTurn(List<BattleshipPlayer> players)
+        {
+            BattleshipPlayer currentPlayer = players.Find(x => x.IsPlayerTurn);
+            int currentPlayerIndex = players.IndexOf(currentPlayer);
+            currentPlayer.IsPlayerTurn = false;
+            players[(currentPlayerIndex + 1) % players.Count].IsPlayerTurn = true;
+        }
     }
 }

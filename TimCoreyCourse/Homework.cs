@@ -450,7 +450,7 @@ namespace TimCoreyCourse
                 BattleshipService.CheckActive(players, playerToAttack);
 
                 if (players.Count() == 1) break;
-                else currentPlayer = (currentPlayer + 1) % players.Count;
+                else BattleshipService.UpdatePlayerTurn(players);
             } while (true);
 
             Console.WriteLine($"{players[0].Name} wins");
