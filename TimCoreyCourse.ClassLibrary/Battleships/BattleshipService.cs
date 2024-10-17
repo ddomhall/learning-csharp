@@ -1,6 +1,4 @@
-﻿using TimCoreyCourse.ClassLibrary.Models;
-
-namespace TimCoreyCourse.ClassLibrary.Services
+﻿namespace TimCoreyCourse.ClassLibrary.Battleships
 {
     public class BattleshipService
     {
@@ -158,6 +156,7 @@ namespace TimCoreyCourse.ClassLibrary.Services
 
                 if (!int.TryParse(Console.ReadLine(), out int playerToAttackId)) continue;
                 playerToAttack = players.Find(x => x.Id == playerToAttackId - 1);
+
                 if (playerToAttack == null || playerToAttack.IsPlayerTurn) continue;
                 break;
             } while (true);
@@ -280,6 +279,14 @@ namespace TimCoreyCourse.ClassLibrary.Services
               ^^\..___,.--`");
                 Thread.Sleep(1000);
             }
+        }
+
+        public static void UpdatePlayerTurn(List<BattleshipPlayer> players)
+        {
+            BattleshipPlayer currentPlayer = players.Find(x => x.IsPlayerTurn);
+            int currentPlayerIndex = players.IndexOf(currentPlayer);
+            currentPlayer.IsPlayerTurn = false;
+            players[(currentPlayerIndex + 1) % players.Count].IsPlayerTurn = true;
         }
     }
 }

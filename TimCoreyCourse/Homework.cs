@@ -438,10 +438,7 @@ namespace TimCoreyCourse
         {
             int numPlayers = BattleshipService.GetNumPlayers();
             List<BattleshipPlayer> players = BattleshipService.CreatePlayers(numPlayers);
-
             BattleshipService.PlaceShips(players);
-
-            int currentPlayer = 0;
 
             do
             {
@@ -450,7 +447,7 @@ namespace TimCoreyCourse
                 BattleshipService.CheckActive(players, playerToAttack);
 
                 if (players.Count() == 1) break;
-                else currentPlayer = (currentPlayer + 1) % players.Count;
+                else BattleshipService.UpdatePlayerTurn(players);
             } while (true);
 
             Console.WriteLine($"{players[0].Name} wins");
