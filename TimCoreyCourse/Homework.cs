@@ -1,8 +1,8 @@
 ﻿using TimCoreyCourse.ClassLibrary.Services;
 using TimCoreyCourse.ClassLibrary.Models;
-using TimCoreyCourse.ClassLibrary.Models.Inheritance;
 using TimCoreyCourse.ClassLibrary.Namespaces;
 using TimCoreyCourse.ClassLibrary.Battleships;
+using TimCoreyCourse.ClassLibrary.Inheritance;
 
 namespace TimCoreyCourse
 {
@@ -472,6 +472,14 @@ namespace TimCoreyCourse
 
             Console.WriteLine(motorcycle.VehicleProp);
             Console.WriteLine(motorcycle.MotorcycleProp);
+        }
+
+        public static void Interfaces()
+        {
+            Person person = new Person();
+            Animal animal = new Animal();
+            person.Run();
+            animal.Run();
         }
     }
 }

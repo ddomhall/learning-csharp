@@ -1,4 +1,4 @@
-﻿namespace TimCoreyCourse.ClassLibrary.Models.Inheritance
+﻿namespace TimCoreyCourse.ClassLibrary.Inheritance
 {
     public class Motorcycle : Vehicle
     {

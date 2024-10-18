@@ -2,15 +2,11 @@
 
 namespace TimCoreyCourse.ClassLibrary.Models
 {
-    public class Person : IRun
+    public class Animal : IRun
     {
-        public string Name { get; set; }
-
-        public int Age { get; set; }
-
         public void Run()
         {
-            Console.WriteLine("Person runs");
+            Console.WriteLine("Animal runs");
         }
     }
 }
