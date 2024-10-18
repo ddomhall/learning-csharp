@@ -1,6 +1,8 @@
 ﻿using TimCoreyCourse.ClassLibrary.Services;
 using TimCoreyCourse.ClassLibrary.Models;
+using TimCoreyCourse.ClassLibrary.Models.Inheritance;
 using TimCoreyCourse.ClassLibrary.Namespaces;
+using TimCoreyCourse.ClassLibrary.Battleships;
 
 namespace TimCoreyCourse
 {
@@ -451,6 +453,25 @@ namespace TimCoreyCourse
             } while (true);
 
             Console.WriteLine($"{players[0].Name} wins");
+        }
+
+        public static void Inheritance()
+        {
+            Vehicle vehicle = new Vehicle();
+            Car car = new Car();
+            Boat boat = new Boat();
+            Motorcycle motorcycle = new Motorcycle();
+
+            Console.WriteLine(vehicle.VehicleProp);
+
+            Console.WriteLine(car.VehicleProp);
+            Console.WriteLine(car.CarProp);
+
+            Console.WriteLine(boat.VehicleProp);
+            Console.WriteLine(boat.BoatProp);
+
+            Console.WriteLine(motorcycle.VehicleProp);
+            Console.WriteLine(motorcycle.MotorcycleProp);
         }
     }
 }

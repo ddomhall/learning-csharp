@@ -22,4 +22,5 @@
 //Homework.Namespaces();
 //Homework.ClassLibraries();
 //Homework.GuestBookV2();
-Homework.BattleshipApp();
+//Homework.BattleshipApp();
+Homework.Inheritance();
