@@ -3,6 +3,7 @@ using TimCoreyCourse.ClassLibrary.Models;
 using TimCoreyCourse.ClassLibrary.Namespaces;
 using TimCoreyCourse.ClassLibrary.Battleships;
 using TimCoreyCourse.ClassLibrary.Inheritance;
+using TimCoreyCourse.ClassLibrary.Interfaces;
 
 namespace TimCoreyCourse
 {
@@ -480,6 +481,28 @@ namespace TimCoreyCourse
             Animal animal = new Animal();
             person.Run();
             animal.Run();
+        }
+
+        public static void InheritanceAndInterfacesProject()
+        {
+            List<IRentable> rentables = new List<IRentable>();
+            List<IBuyable> buyables = new List<IBuyable>();
+
+            rentables.Add(new Rentable("Rentable"));
+            rentables.Add(new BuyAndRentable("BuyAndRentable"));
+
+            buyables.Add(new Buyable("Buyable"));
+            buyables.Add(new BuyAndRentable("BuyAndRentable"));
+
+            foreach (IRentable item in rentables)
+            {
+                item.Rent();
+            }
+
+            foreach (IBuyable item in buyables)
+            {
+                item.Buy();
+            }
         }
     }
 }
