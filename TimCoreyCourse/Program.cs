@@ -25,4 +25,5 @@
 //Homework.BattleshipApp();
 //Homework.Inheritance();
 //Homework.Interfaces();
-Homework.InheritanceAndInterfacesProject();
+//Homework.InheritanceAndInterfacesProject();
+Homework.AccessModifiers();

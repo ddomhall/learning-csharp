@@ -504,5 +504,16 @@ namespace TimCoreyCourse
                 item.Buy();
             }
         }
+
+        public static void AccessModifiers()
+        {
+            AccessModifierTest accessModifierTest = new AccessModifierTest();
+            accessModifierTest.Public = true;
+            accessModifierTest.Private = true;
+
+            AccessModifierInterface accessModifierInterface = new AccessModifierInterface();
+            accessModifierInterface.Protected = true;
+            accessModifierInterface.Internal = true;
+        }
     }
 }
