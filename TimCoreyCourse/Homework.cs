@@ -524,5 +524,12 @@ namespace TimCoreyCourse
             IAbstractInterface child = new AbstractChild();
             child.AbstractInterfaceMethod();
         }
+
+        public static void MethodOverriding()
+        {
+            Person person = new Person();
+            person.Name = "test";
+            Console.WriteLine(person);
+        }
     }
 }

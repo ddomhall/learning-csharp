@@ -12,5 +12,10 @@ namespace TimCoreyCourse.ClassLibrary.Models
         {
             Console.WriteLine("Person runs");
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }
