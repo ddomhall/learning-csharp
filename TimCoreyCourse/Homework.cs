@@ -4,6 +4,9 @@ using TimCoreyCourse.ClassLibrary.Namespaces;
 using TimCoreyCourse.ClassLibrary.Battleships;
 using TimCoreyCourse.ClassLibrary.Inheritance;
 using TimCoreyCourse.ClassLibrary.Interfaces;
+using TimCoreyCourse.ClassLibrary.AccessModifiers;
+using TimCoreyCourse.ClassLibrary.InheritanceAndInterfacesProject;
+using TimCoreyCourse.ClassLibrary.AbstractClasses;
 
 namespace TimCoreyCourse
 {
@@ -514,6 +517,12 @@ namespace TimCoreyCourse
             AccessModifierInterface accessModifierInterface = new AccessModifierInterface();
             accessModifierInterface.Protected = true;
             accessModifierInterface.Internal = true;
+        }
+
+        public static void AbstractClasses()
+        {
+            IAbstractInterface child = new AbstractChild();
+            child.AbstractInterfaceMethod();
         }
     }
 }

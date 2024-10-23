@@ -26,4 +26,5 @@
 //Homework.Inheritance();
 //Homework.Interfaces();
 //Homework.InheritanceAndInterfacesProject();
-Homework.AccessModifiers();
+//Homework.AccessModifiers();
+Homework.AbstractClasses();
