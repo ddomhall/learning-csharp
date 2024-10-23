@@ -1,6 +1,6 @@
 ﻿using TimCoreyCourse.ClassLibrary.Interfaces;
 
-namespace TimCoreyCourse.ClassLibrary.Models
+namespace TimCoreyCourse.ClassLibrary.InheritanceAndInterfacesProject
 {
     public class Rentable : NamedItem, IRentable
     {

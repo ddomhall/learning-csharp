@@ -1,4 +1,4 @@
-﻿namespace TimCoreyCourse.ClassLibrary.Models
+﻿namespace TimCoreyCourse.ClassLibrary.InheritanceAndInterfacesProject
 {
     public class Address
     {
