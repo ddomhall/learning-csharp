@@ -531,5 +531,10 @@ namespace TimCoreyCourse
             person.Name = "test";
             Console.WriteLine(person);
         }
+
+        public static void ModifiersAndOverridesProject()
+        {
+            Console.WriteLine("test");
+        }
     }
 }
