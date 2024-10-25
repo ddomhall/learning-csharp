@@ -7,6 +7,7 @@ using TimCoreyCourse.ClassLibrary.Interfaces;
 using TimCoreyCourse.ClassLibrary.AccessModifiers;
 using TimCoreyCourse.ClassLibrary.InheritanceAndInterfacesProject;
 using TimCoreyCourse.ClassLibrary.AbstractClasses;
+using TimCoreyCourse.ClassLibrary.ModifiersAndOverridesProject;
 
 namespace TimCoreyCourse
 {
@@ -530,6 +531,16 @@ namespace TimCoreyCourse
             Person person = new Person();
             person.Name = "test";
             Console.WriteLine(person);
+        }
+
+        public static void ModifiersAndOverridesProject()
+        {
+            //PokerGame game = new PokerGame();
+            BlackjackGame game = new BlackjackGame();
+
+            game.CreatePlayers();
+            game.DealCards();
+            game.RevealCards();
         }
     }
 }
