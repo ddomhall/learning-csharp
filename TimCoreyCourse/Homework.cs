@@ -557,5 +557,11 @@ namespace TimCoreyCourse
                 employee.DisplayNameAndCompany();
             }
         }
+
+        public static void ExtensionMethods()
+        {
+            Person person = new Person("dom");
+            person.SetDefaultAge().PrintInfo();
+        }
     }
 }
