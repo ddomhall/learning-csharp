@@ -583,5 +583,17 @@ namespace TimCoreyCourse
             PrintToString(0);
             PrintToString(true);
         }
+
+        public static void Events()
+        {
+            EventTest eventTest = new EventTest();
+            eventTest.Event += EventListener;
+            eventTest.TriggerEvent();
+
+            void EventListener(object? sender, string e)
+            {
+                Console.WriteLine(e);
+            }
+        }
     }
 }
