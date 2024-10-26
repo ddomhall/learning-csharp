@@ -32,4 +32,5 @@
 //ModifiersAndOverridesProject();
 //MethodOverloading();
 //ExtensionMethods();
-OverloadingAndExtensionsProject();
+//OverloadingAndExtensionsProject();
+Generics();

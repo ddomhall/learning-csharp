@@ -571,5 +571,17 @@ namespace TimCoreyCourse
             buyer.LastBoughtItemCost = buyer.LastBoughtItemCost.Update("how much did it cost?");
             Console.WriteLine($"your {buyer.LastBoughtItem} cost {buyer.LastBoughtItemCost}");
         }
+
+        public static void Generics()
+        {
+            void PrintToString<T>(T item)
+            {
+                Console.WriteLine(item.ToString());
+            }
+
+            PrintToString("test");
+            PrintToString(0);
+            PrintToString(true);
+        }
     }
 }
