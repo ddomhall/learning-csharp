@@ -542,5 +542,20 @@ namespace TimCoreyCourse
             game.DealCards();
             game.RevealCards();
         }
+
+        public static void MethodOverloading()
+        {
+            List<Employee> employees = new List<Employee>()
+            {
+                new Employee(),
+                new Employee("dom2"),
+                new Employee("dom3", "ddomhall2"),
+            };
+
+            foreach (Employee employee in employees)
+            {
+                employee.DisplayNameAndCompany();
+            }
+        }
     }
 }
