@@ -563,5 +563,13 @@ namespace TimCoreyCourse
             Person person = new Person("dom");
             person.SetDefaultAge().PrintInfo();
         }
+
+        public static void OverloadingAndExtensionsProject()
+        {
+            Buyer buyer = new Buyer();
+            buyer.LastBoughtItem = buyer.LastBoughtItem.Update("what is the last item you bought?");
+            buyer.LastBoughtItemCost = buyer.LastBoughtItemCost.Update("how much did it cost?");
+            Console.WriteLine($"your {buyer.LastBoughtItem} cost {buyer.LastBoughtItemCost}");
+        }
     }
 }
