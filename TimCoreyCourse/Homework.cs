@@ -595,5 +595,25 @@ namespace TimCoreyCourse
                 Console.WriteLine(e);
             }
         }
+
+        public static void GenericsAndEventsProject()
+        {
+            List<Person> people = new List<Person>()
+            {
+                new Person("dom1"),
+                new Person("dom2"),
+                new Person("dom3"),
+            };
+
+            CSVConverter<Person> personConverter = new CSVConverter<Person>();
+            personConverter.NameContains1 += PersonConverter_NameContains1;
+            personConverter.OutputAsCSV(people);
+
+            void PersonConverter_NameContains1(object? sender, Person e)
+            {
+                Console.WriteLine($"{e.Name} contains 1");
+            }
+        }
+
     }
 }
