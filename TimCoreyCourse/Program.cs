@@ -29,4 +29,9 @@
 //AccessModifiers();
 //AbstractClasses();
 //MethodOverriding();
-ModifiersAndOverridesProject();
+//ModifiersAndOverridesProject();
+//MethodOverloading();
+//ExtensionMethods();
+//OverloadingAndExtensionsProject();
+//Generics();
+Events();

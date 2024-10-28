@@ -7,6 +7,7 @@ using TimCoreyCourse.ClassLibrary.Interfaces;
 using TimCoreyCourse.ClassLibrary.AccessModifiers;
 using TimCoreyCourse.ClassLibrary.InheritanceAndInterfacesProject;
 using TimCoreyCourse.ClassLibrary.AbstractClasses;
+using TimCoreyCourse.ClassLibrary.ModifiersAndOverridesProject;
 
 namespace TimCoreyCourse
 {
@@ -534,7 +535,65 @@ namespace TimCoreyCourse
 
         public static void ModifiersAndOverridesProject()
         {
-            Console.WriteLine("test");
+            //PokerGame game = new PokerGame();
+            BlackjackGame game = new BlackjackGame();
+
+            game.CreatePlayers();
+            game.DealCards();
+            game.RevealCards();
+        }
+
+        public static void MethodOverloading()
+        {
+            List<Employee> employees = new List<Employee>()
+            {
+                new Employee(),
+                new Employee("dom2"),
+                new Employee("dom3", "ddomhall2"),
+            };
+
+            foreach (Employee employee in employees)
+            {
+                employee.DisplayNameAndCompany();
+            }
+        }
+
+        public static void ExtensionMethods()
+        {
+            Person person = new Person("dom");
+            person.SetDefaultAge().PrintInfo();
+        }
+
+        public static void OverloadingAndExtensionsProject()
+        {
+            Buyer buyer = new Buyer();
+            buyer.LastBoughtItem = buyer.LastBoughtItem.Update("what is the last item you bought?");
+            buyer.LastBoughtItemCost = buyer.LastBoughtItemCost.Update("how much did it cost?");
+            Console.WriteLine($"your {buyer.LastBoughtItem} cost {buyer.LastBoughtItemCost}");
+        }
+
+        public static void Generics()
+        {
+            void PrintToString<T>(T item)
+            {
+                Console.WriteLine(item.ToString());
+            }
+
+            PrintToString("test");
+            PrintToString(0);
+            PrintToString(true);
+        }
+
+        public static void Events()
+        {
+            EventTest eventTest = new EventTest();
+            eventTest.Event += EventListener;
+            eventTest.TriggerEvent();
+
+            void EventListener(object? sender, string e)
+            {
+                Console.WriteLine(e);
+            }
         }
     }
 }
