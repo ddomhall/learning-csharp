@@ -1,5 +1,6 @@
 ﻿using static TimCoreyCourse.Homework;
 
+Start();
 //Variables();
 //TypeConversions();
 //ConditionalStatements();
@@ -35,4 +36,4 @@
 //OverloadingAndExtensionsProject();
 //Generics();
 //Events();
-GenericsAndEventsProject();
+//GenericsAndEventsProject();

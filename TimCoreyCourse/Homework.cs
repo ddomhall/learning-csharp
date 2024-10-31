@@ -13,6 +13,10 @@ namespace TimCoreyCourse
 {
     public class Homework
     {
+        public static void Start()
+        {
+            Console.WriteLine("Tim Corey Course\n");
+        }
         public static void Variables()
         {
             string name = "dom";
@@ -334,10 +338,10 @@ namespace TimCoreyCourse
 
         public static void StaticClasses()
         {
-            CalculationService.Add(10, 10);
-            CalculationService.Subtract(10, 10);
-            CalculationService.Multiply(10, 10);
-            CalculationService.Divide(10, 10);
+            Console.WriteLine(CalculationService.Add(10, 10));
+            Console.WriteLine(CalculationService.Subtract(10, 10));
+            Console.WriteLine(CalculationService.Multiply(10, 10));
+            Console.WriteLine(CalculationService.Divide(10, 10));
         }
 
         public static void InstantiatedClasses()
