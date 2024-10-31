@@ -1,0 +1,13 @@
+﻿@page
+@model TimCoreyCourse.RazorPages.Pages.WelcomeModel
+
+@if (!string.IsNullOrEmpty(Model.FirstName) && !string.IsNullOrEmpty(Model.LastName))
+{
+    <p>Hi @Model.FirstName @Model.LastName</p>
+}
+
+<form method="post">
+    <input asp-for="FirstName" placeholder="first name"/>
+    <input asp-for="LastName" placeholder="last name"/>
+    <button type="submit" class="btn btn-dark">submit</button>
+</form>
