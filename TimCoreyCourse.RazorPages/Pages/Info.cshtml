@@ -1,0 +1,16 @@
+﻿@page
+@model TimCoreyCourse.RazorPages.Pages.InfoModel
+@{
+}
+
+
+@if (Model.Age != 0 && !string.IsNullOrEmpty(Model.Name))
+{
+    <p>Hi @Model.Name, you are @Model.Age</p>
+}
+
+<form method="post">
+    <input asp-for="Name" placeholder="name"/>
+    <input asp-for="Age" placeholder="age" type="number"/>
+    <button type="submit" class="btn btn-dark">submit</button>
+</form>

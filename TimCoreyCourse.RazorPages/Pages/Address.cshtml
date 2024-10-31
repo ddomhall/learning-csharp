@@ -1,0 +1,15 @@
+﻿@page
+@model TimCoreyCourse.RazorPages.Pages.AddressModel
+@{
+}
+
+@if (Model.HouseNumber != 0 && !string.IsNullOrEmpty(Model.PostCode))
+{
+    <p>you live at number @Model.HouseNumber @Model.PostCode</p>
+}
+
+<form method="post">
+    <input asp-for="HouseNumber" placeholder="house number" type="number"/>
+    <input asp-for="PostCode" placeholder="post code"/>
+    <button type="submit" class="btn btn-dark">submit</button>
+</form>
