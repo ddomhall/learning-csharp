@@ -18,6 +18,18 @@ namespace TimCoreyCourse.MVC.Controllers
             return View();
         }
 
+        public IActionResult Address()
+        {
+
+            return View(new Address());
+        }
+
+        [HttpPost]
+        public IActionResult Address(Address address)
+        {
+            return View(address);
+        }
+
         public IActionResult Person()
         {
 
