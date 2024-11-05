@@ -8,6 +8,8 @@ using TimCoreyCourse.ClassLibrary.AccessModifiers;
 using TimCoreyCourse.ClassLibrary.InheritanceAndInterfacesProject;
 using TimCoreyCourse.ClassLibrary.AbstractClasses;
 using TimCoreyCourse.ClassLibrary.ModifiersAndOverridesProject;
+using Microsoft.Extensions.Configuration;
+using TimCoreyCourse.ClassLibrary.Database;
 
 namespace TimCoreyCourse
 {
@@ -17,6 +19,7 @@ namespace TimCoreyCourse
         {
             Console.WriteLine("Tim Corey Course\n");
         }
+
         public static void Variables()
         {
             string name = "dom";
@@ -619,5 +622,28 @@ namespace TimCoreyCourse
             }
         }
 
+        public static void Database()
+        {
+            DataAccess sql = new DataAccess(GetConnectionString());
+
+            var people = sql.GetAllPeople();
+            foreach (var personId in people)
+            {
+                var person = sql.GetFullPersonById(personId.Id);
+                Console.WriteLine($"{person.Id}: {person.Name}, {person.Address}, {person.Employer}");
+            }
+
+
+            string GetConnectionString(string connStrName = "Default")
+            {
+                var builder = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json");
+
+                var config = builder.Build();
+
+                return config.GetConnectionString(connStrName);
+            }
+        }
     }
 }
