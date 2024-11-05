@@ -645,5 +645,49 @@ namespace TimCoreyCourse
                 return config.GetConnectionString(connStrName);
             }
         }
+
+        public static void TextFiles()
+        {
+            List<Person> people1 = new List<Person>()
+            {
+                new Person()
+                {
+                    Name = "dom1",
+                    Age = 1
+                },
+
+                new Person()
+                {
+                    Name = "dom2",
+                    Age = 2
+                }
+            };
+
+            List<string> csv = new List<string>();
+            foreach (var person in people1)
+            {
+                csv.Add($"{person.Name},{person.Age}");
+            }
+            string filePath = "C:\\Users\\domjs\\Desktop\\test.csv";
+
+            File.WriteAllLines(filePath, csv);
+            List<string> readLines = File.ReadAllLines(filePath).ToList();
+
+            List<Person> people2 = new List<Person>();
+            foreach (var readLine in readLines)
+            {
+                string[] line = readLine.Split(',');
+                people2.Add(new Person()
+                {
+                    Name = line[0],
+                    Age = int.Parse(line[1])
+                });
+            }
+
+            foreach (var person in people2)
+            {
+                Console.WriteLine($"{person.Name},{person.Age}");
+            }
+        }
     }
 }
