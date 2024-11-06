@@ -8,8 +8,10 @@ using TimCoreyCourse.ClassLibrary.AccessModifiers;
 using TimCoreyCourse.ClassLibrary.InheritanceAndInterfacesProject;
 using TimCoreyCourse.ClassLibrary.AbstractClasses;
 using TimCoreyCourse.ClassLibrary.ModifiersAndOverridesProject;
-using Microsoft.Extensions.Configuration;
 using TimCoreyCourse.ClassLibrary.Database;
+using TimCoreyCourse.ClassLibrary.API;
+using Microsoft.Extensions.Configuration;
+using System.Text.Json;
 
 namespace TimCoreyCourse
 {
@@ -687,6 +689,36 @@ namespace TimCoreyCourse
             foreach (var person in people2)
             {
                 Console.WriteLine($"{person.Name},{person.Age}");
+            }
+        }
+
+        public static async void APIs()
+        {
+            var client = new HttpClient();
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true,
+            };
+
+            var response = client.GetAsync("https://swapi.dev/api/people/1");
+            if (response.Result.IsSuccessStatusCode)
+            {
+                var data = await response.Result.Content.ReadAsStringAsync();
+                var swPerson = JsonSerializer.Deserialize<SWPerson>(data, options);
+                Console.WriteLine(swPerson.Name);
+
+                List<SWFilm> films = new List<SWFilm>();
+                foreach (var film in swPerson.Films)
+                {
+                    response = client.GetAsync(film);
+                    if (response.Result.IsSuccessStatusCode)
+                    {
+                        data = await response.Result.Content.ReadAsStringAsync();
+                        var swFilm = JsonSerializer.Deserialize<SWFilm>(data, options);
+                        Console.WriteLine(swFilm.Title);
+                        films.Add(swFilm);
+                    }
+                }
             }
         }
     }
