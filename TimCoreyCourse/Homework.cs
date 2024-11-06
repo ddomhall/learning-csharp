@@ -721,5 +721,26 @@ namespace TimCoreyCourse
                 }
             }
         }
+
+        public static void LinqAndLambdas()
+        {
+            List<Person> people = new List<Person>()
+            {
+                new Person() {Name = "dom1", Age = 1},
+                new Person() {Name = "dom2", Age = 2},
+                new Person() {Name = "dom3", Age = 3},
+                new Person() {Name = "dom4", Age = 4},
+                new Person() {Name = "dom5", Age = 5},
+            };
+
+            List<Person> results1 = people.Where(x => x.Age > 2).OrderBy(x => x.Age).ToList();
+            List<Person> results2 = (from p in people where p.Age < 3 orderby p.Age descending select p).ToList();
+
+            Console.WriteLine("res1");
+            foreach (Person person in results1) Console.WriteLine($"{person.Name} is {person.Age}");
+
+            Console.WriteLine("\nres2");
+            foreach (Person person in results2) Console.WriteLine($"{person.Name} is {person.Age}");
+        }
     }
 }

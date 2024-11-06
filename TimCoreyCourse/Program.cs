@@ -39,4 +39,5 @@ Start();
 //GenericsAndEventsProject();
 //Database();
 //TextFiles();
-APIs();
+//APIs();
+LinqAndLambdas();
